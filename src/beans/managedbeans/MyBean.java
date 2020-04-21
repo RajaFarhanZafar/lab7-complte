@@ -41,7 +41,7 @@ public class MyBean {
         session.setMaxInactiveInterval(15*60);
         return "Userpage.xhtml?faces-redirect=true";
     }
-    public boolean isloggedIn()
+    public boolean isLoggedIn()
     {
         HttpSession session= (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         if(session!=null) {
