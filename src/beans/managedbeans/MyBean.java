@@ -53,6 +53,15 @@ public class MyBean {
         }
         return false;
     }
+    public String logoutUser()
+    {
+        HttpSession session= (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        if(session!=null)
+        {
+            session.invalidate();
+        }
+        return "index.xhtml?faces-redirect=true";
+    }
 
     public User getUser() {
         return user;
