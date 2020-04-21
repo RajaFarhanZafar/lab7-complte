@@ -28,6 +28,17 @@
             <label >Password</label>
             <h:inputSecret value="#{myBean.user.password}" styleClass="form-control"/>
         </div>
+        <div class="form-group">
+        <tr><td >
+            <b><h:outputLabel value="Gender::" /></b></td>
+            <td>
+                <h:selectOneRadio id="gender" value="#{addBean.user_gender}">
+                <f:selectItem itemValue="Male" itemLabel="Male" />
+                <f:selectItem itemValue="Female" itemLabel="Female" />
+            </h:selectOneRadio>
+        </td></tr>
+        </div>
+
         <h:commandButton styleclass="btn btn-primary" value=" Submit" action="${myBean.registerAccount()}" onclick="myFunction()"/>
     </h:form>
     </div>
