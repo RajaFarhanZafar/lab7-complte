@@ -39,8 +39,19 @@ public class MyBean {
         HttpSession session= (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         session.setAttribute("uemail",user.getEmail());
         session.setMaxInactiveInterval(15*60);
-
         return "Userpage.xhtml?faces-redirect=true";
+    }
+    public boolean isloggedIn()
+    {
+        HttpSession session= (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+        if(session!=null) {
+            String username=(String) session.getAttribute("uemail");
+            if(username!=null)
+            {
+             return true;
+            }
+        }
+        return false;
     }
 
     public User getUser() {
