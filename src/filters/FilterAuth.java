@@ -11,7 +11,7 @@ public class FilterAuth implements Filter {
     }
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         if(((HttpServletRequest)req).getSession().getAttribute("uemail")==null){
-            ((HttpServletResponse)resp).sendRedirect("login.xhtml");
+            ((HttpServletResponse)resp).sendRedirect("/login.xhtml");
         }else{
             chain.doFilter(req, resp);
         }
