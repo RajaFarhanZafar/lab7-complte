@@ -7,7 +7,9 @@ import database.DbConnection;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 
@@ -16,16 +18,6 @@ public class MyBean {
     private User user;
     private DbConnection dbConnection;
     private boolean existing;
-    private String user_gender;
-    private List<String> user_color;
-
-    public String getUser_gender() {
-        return user_gender;
-    }
-
-    public void setUser_gender(String user_gender) {
-        this.user_gender = user_gender;
-    }
 
     public MyBean() {
 
@@ -38,6 +30,7 @@ public class MyBean {
         System.out.println("email is " +user.getEmail());
         System.out.println("password is " +user.getPassword());
         dbConnection.insertRecord(user.getName(),user.getEmail(),user.getPassword());
+        AddFormData();
 
         return null;
     }
@@ -74,6 +67,20 @@ public class MyBean {
         }
         return "/index.xhtml?faces-redirect=true";
     }
+    public String list2String(List<String> list) {
+        String str = null;
+        str = list.toString();
+        return str;
+    }
+    public String AddFormData()
+    {
+        System.out.println("gender is " +user.getUser_gender());
+        System.out.println("color is " +user.getUser_color());
+        dbConnection.AddData(user.getName(),user.getUser_gender(),user.getUser_color(),"14");
+        return null;
+    }
+
+
 
 
     public User getUser() {
@@ -84,3 +91,4 @@ public class MyBean {
         this.user = user;
     }
 }
+

@@ -32,11 +32,22 @@
         <tr><td >
             <b><h:outputLabel value="Gender::" /></b></td>
             <td>
-                <h:selectOneRadio id="gender" value="#{addBean.user_gender}">
+                <h:selectOneRadio id="gender" value="#{myBean.user.user_gender}">
                 <f:selectItem itemValue="Male" itemLabel="Male" />
                 <f:selectItem itemValue="Female" itemLabel="Female" />
             </h:selectOneRadio>
         </td></tr>
+
+            <tr><td >
+                <b><h:outputLabel value="Choose Color::" /></b></td>
+                <td>
+                    <h:selectManyCheckbox value="#{myBean.user.user_color}">
+                    <f:selectItem itemLabel="Red" itemValue="Red" />
+                    <f:selectItem itemLabel="Blue" itemValue="Blue" />
+                    <f:selectItem itemLabel="Green" itemValue="Green" />
+                    <f:selectItem itemLabel="Pink" itemValue="Pink" />
+                </h:selectManyCheckbox>
+            </td></tr>
         </div>
 
         <h:commandButton styleclass="btn btn-primary" value=" Submit" action="${myBean.registerAccount()}" onclick="myFunction()"/>

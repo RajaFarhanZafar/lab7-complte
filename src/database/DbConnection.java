@@ -58,8 +58,27 @@ public class DbConnection {
         }
         return null;
     }
+    public void AddData(String addBy, String gender,String color,String age) {
+    try {
+        String sqlQuery = "INSERT INTO users_detail(`addby`, `gender`, `color`, `age`) VALUES(?,?,?,?)";
+        PreparedStatement preparedStatement1 = connection.prepareStatement(sqlQuery);
+        preparedStatement1.setString(1,addBy);
+        preparedStatement1.setString(2,gender);
+        preparedStatement1.setString(3,color);
+        preparedStatement1.setString(4,age);
 
-    public void updateRecord(int id,String firstName,String lastName,String email){
+
+        int noOfRowsInserted = preparedStatement1.executeUpdate();
+        if(noOfRowsInserted>0){
+            System.out.println(noOfRowsInserted + "  data added rows inserted!");
+        }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+        public void updateRecord(int id,String firstName,String lastName,String email){
         try {
             String sqlQuery = "UPDATE student SET first_name=?,last_name=?,email=? WHERE id=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
@@ -109,4 +128,5 @@ public class DbConnection {
         }
         return null;
     }
+
 }
