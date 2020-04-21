@@ -40,7 +40,7 @@ public class MyBean {
         session.setAttribute("uemail",user.getEmail());
         session.setMaxInactiveInterval(15*60);
 
-        return "Userpage.xhtml";
+        return "Userpage.xhtml?fa";
     }
 
     public User getUser() {
