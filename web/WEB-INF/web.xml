@@ -18,6 +18,6 @@
     </filter>
     <filter-mapping>
         <filter-name>FilterAuth</filter-name>
-        <url-pattern>/Userpage.xhtml</url-pattern>
+        <url-pattern>/auth/*</url-pattern>
     </filter-mapping>
 </web-app>

@@ -39,7 +39,7 @@ public class MyBean {
         HttpSession session= (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
         session.setAttribute("uemail",user.getEmail());
         session.setMaxInactiveInterval(15*60);
-        return "userpage.xhtml?faces-redirect=true";
+        return "auth/userpage.xhtml?faces-redirect=true";
     }
     public boolean isLoggedIn()
     {
@@ -60,7 +60,7 @@ public class MyBean {
         {
             session.invalidate();
         }
-        return "index.xhtml?faces-redirect=true";
+        return "/index.xhtml?faces-redirect=true";
     }
 
     public User getUser() {
