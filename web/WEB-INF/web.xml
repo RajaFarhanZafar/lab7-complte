@@ -12,4 +12,12 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+    <filter>
+        <filter-name>FilterAuth</filter-name>
+        <filter-class>filters.FilterAuth</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterAuth</filter-name>
+        <url-pattern>Userpage.xhtml</url-pattern>
+    </filter-mapping>
 </web-app>
