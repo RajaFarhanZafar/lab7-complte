@@ -8,12 +8,24 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import java.sql.ResultSet;
+import java.util.List;
 
 
 @ManagedBean
 public class MyBean {
     private User user;
     private DbConnection dbConnection;
+    private boolean existing;
+    private String user_gender;
+    private List<String> user_color;
+
+    public String getUser_gender() {
+        return user_gender;
+    }
+
+    public void setUser_gender(String user_gender) {
+        this.user_gender = user_gender;
+    }
 
     public MyBean() {
 
@@ -62,6 +74,7 @@ public class MyBean {
         }
         return "/index.xhtml?faces-redirect=true";
     }
+
 
     public User getUser() {
         return user;
