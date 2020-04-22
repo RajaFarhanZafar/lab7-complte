@@ -6,11 +6,11 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:H="http://java.sun.com/jsf/html">
     <h:head>
-        <ui:include src="Head.xhtml"></ui:include>
+
 
     </h:head>
 
-<h:body>
+<h:body> <ui:include src="Head.xhtml"></ui:include>
     <ui:include src="nav.xhtml"></ui:include>
 
     <h1>Registration User</h1>
@@ -28,27 +28,67 @@
             <label >Password</label>
             <h:inputSecret value="#{myBean.user.password}" styleClass="form-control"/>
         </div>
-        <div class="form-group">
-        <tr><td >
-            <b><h:outputLabel value="Gender::" /></b></td>
-            <td>
-                <h:selectOneRadio id="gender" value="#{myBean.user.user_gender}">
-                <f:selectItem itemValue="Male" itemLabel="Male" />
-                <f:selectItem itemValue="Female" itemLabel="Female" />
-            </h:selectOneRadio>
-        </td></tr>
-
-            <tr><td >
-                <b><h:outputLabel value="Choose Color::" /></b></td>
+        <div class="custom-control custom-radio" >
+            <tr>
+                <td><b><h:outputLabel  value="Gender::" /></b></td>
                 <td>
-                    <h:selectManyCheckbox value="#{myBean.user.favNumber2}">
-                        <f:selectItems value="#{myBean.user.favNumber2Value}" />
+                    <h:selectOneRadio  id="gender" value="#{myBean.user.user_gender}">
+                    <f:selectItem itemValue="Male" itemLabel="Male" />
+                    <f:selectItem itemValue="Female" itemLabel="Female" />
+                </h:selectOneRadio>
+                </td>
+            </tr>
+        </div>
+        <div class="btn-group-toggle">
+            <tr><td >
+                <b><h:outputLabel value="Choose Course::" /></b></td>
+                <td>
+                    <h:selectManyCheckbox value="#{myBean.user.val}">
+                        <f:selectItem itemValue="Java" itemLabel="JAVA" />
+                        <f:selectItem itemValue="EAD" itemLabel="EAD" />
+                        <f:selectItem itemValue="C++" itemLabel="C++" />
+                        <f:selectItem itemValue="OOP" itemLabel="OOP" />
+                        <f:selectItem itemValue="Android" itemLabel="Android" />
                     </h:selectManyCheckbox>
             </td></tr>
         </div>
-
-        <h:commandButton styleclass="btn btn-primary" value=" Submit" action="${myBean.registerAccount()}" onclick="myFunction()"/>
+        <div class="btn btn-secondary">
+            <tr><td >
+                <b><h:outputLabel   value="Choose age::" /></b></td>
+                <td>
+                    <h:selectOneMenu class="dropdown-item-text" value="#{myBean.user.AGE}">
+                        <f:selectItem itemValue="bwtween 10-17" itemLabel="bwtween 10 - 17" />
+                        <f:selectItem itemValue="bwtween 18-25" itemLabel="bwtween 18 - 25" />
+                        <f:selectItem itemValue="bwtween 26-35" itemLabel="bwtween 26 - 35" />
+                        <f:selectItem itemValue="bwtween 36-50" itemLabel="bwtween 36 - 50" />
+                        <f:selectItem itemValue="50+" itemLabel="OR 50+" />
+                    </h:selectOneMenu>
+                </td></tr>
+        </div>
+        <b>
+        <h:commandButton class="btn btn-primary" value=" Submit" action="${myBean.registerAccount()}" />
+        </b>
     </h:form>
+    </div>
+    <div class="container" >
+        <table class="table table-hover">
+            <tr>
+                <th>ID</th>
+                <th>Added By</th>
+                <th>Course</th>
+                <th>Gender</th>
+                <th>Age</th>
+            </tr>
+            <ui:repeat value="#{myBean.info}" var="usr">
+            <tr>
+                <td>#{usr.id}</td>
+                <td>#{usr.name}</td>
+                <td>#{usr.course}</td>
+                <td>#{usr.user_gender}</td>
+                <td>#{usr.AGE}</td>
+            </tr>
+            </ui:repeat>
+        </table>
     </div>
 </h:body>
 

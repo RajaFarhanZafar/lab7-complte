@@ -4,12 +4,14 @@ package beans.managedbeans;
 import beans.backingbeans.User;
 import database.DbConnection;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -19,18 +21,15 @@ public class MyBean {
     private DbConnection dbConnection;
     private boolean existing;
 
-    public MyBean() {
 
-        user=new User();
-        dbConnection=new DbConnection();
-    }
+
     public String registerAccount()
     {
         System.out.println("name is " +user.getName());
         System.out.println("email is " +user.getEmail());
         System.out.println("password is " +user.getPassword());
 
-     //   dbConnection.insertRecord(user.getName(),user.getEmail(),user.getPassword());
+        dbConnection.insertRecord(user.getName(),user.getEmail(),user.getPassword());
         AddFormData();
 
         return null;
@@ -68,17 +67,14 @@ public class MyBean {
         }
         return "/index.xhtml?faces-redirect=true";
     }
-
     public String AddFormData()
     {
+        String course =user.getVal().toString();
         System.out.println("gender is " +user.getUser_gender());
-        System.out.println("data is " +user.getFavNumber2InString());
-
-//        dbConnection.AddData(user.getName(),user.getUser_gender(),"black","14");
+        System.out.println("data is " +user.getAGE());
+        dbConnection.AddData(user.getName(),user.getUser_gender(),course,user.getAGE());
         return null;
     }
-
-
 
 
     public User getUser() {
@@ -87,6 +83,28 @@ public class MyBean {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+
+    public List<User> getInfo() {
+        List<User> users = new ArrayList<User>();
+        DbConnection conn = new DbConnection();
+        ResultSet rs = conn.getRecords();
+        try {
+            while (rs.next()) {
+                User user = new User();
+                user.setName(rs.getString("addby"));
+                users.add(user);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return users;
+    }
+    public MyBean() {
+
+        user=new User();
+        dbConnection=new DbConnection();
     }
 }
 

@@ -60,7 +60,7 @@ public class DbConnection {
     }
     public void AddData(String addBy, String gender,String color,String age) {
     try {
-        String sqlQuery = "INSERT INTO users_detail(`addby`, `gender`, `color`, `age`) VALUES(?,?,?,?)";
+        String sqlQuery = "INSERT INTO users_detail(`addby`, `gender`, `course`, `age`) VALUES(?,?,?,?)";
         PreparedStatement preparedStatement1 = connection.prepareStatement(sqlQuery);
         preparedStatement1.setString(1,addBy);
         preparedStatement1.setString(2,gender);
@@ -118,9 +118,10 @@ public class DbConnection {
 
     public ResultSet getRecords(){
         try {
-            String sqlQuery = "SELECT * FROM student";
+            String sqlQuery = "SELECT * FROM users_detail";
             Statement statement = connection.createStatement();
             ResultSet result = statement.executeQuery(sqlQuery);
+
             return result;
 
         } catch (SQLException e) {
