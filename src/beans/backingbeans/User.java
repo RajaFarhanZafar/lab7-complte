@@ -9,7 +9,15 @@ public class User {
     private String password;
 
     private String user_gender;
-    private String user_color;
+    public String[] data = {"1","2","3"};
+
+    public String[] getData() {
+        return data;
+    }
+
+    public void setData(String[] data) {
+        this.data = data;
+    }
 
     public User() {
     }
@@ -61,11 +69,5 @@ public class User {
         this.user_gender = user_gender;
     }
 
-    public String getUser_color() {
-        return user_color;
-    }
 
-    public void setUser_color(String user_color) {
-        this.user_color = user_color;
-    }
 }

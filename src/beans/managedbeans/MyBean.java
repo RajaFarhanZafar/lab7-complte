@@ -29,7 +29,8 @@ public class MyBean {
         System.out.println("name is " +user.getName());
         System.out.println("email is " +user.getEmail());
         System.out.println("password is " +user.getPassword());
-        dbConnection.insertRecord(user.getName(),user.getEmail(),user.getPassword());
+
+     //   dbConnection.insertRecord(user.getName(),user.getEmail(),user.getPassword());
         AddFormData();
 
         return null;
@@ -75,8 +76,9 @@ public class MyBean {
     public String AddFormData()
     {
         System.out.println("gender is " +user.getUser_gender());
-        System.out.println("color is " +user.getUser_color());
-        dbConnection.AddData(user.getName(),user.getUser_gender(),user.getUser_color(),"14");
+        System.out.println("data is " +user.getData());
+
+//        dbConnection.AddData(user.getName(),user.getUser_gender(),"black","14");
         return null;
     }
 
