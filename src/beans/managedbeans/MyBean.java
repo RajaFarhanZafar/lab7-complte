@@ -68,15 +68,11 @@ public class MyBean {
         }
         return "/index.xhtml?faces-redirect=true";
     }
-    public String list2String(List<String> list) {
-        String str = null;
-        str = list.toString();
-        return str;
-    }
+
     public String AddFormData()
     {
         System.out.println("gender is " +user.getUser_gender());
-        System.out.println("data is " +user.getData());
+        System.out.println("data is " +user.getFavNumber2InString());
 
 //        dbConnection.AddData(user.getName(),user.getUser_gender(),"black","14");
         return null;

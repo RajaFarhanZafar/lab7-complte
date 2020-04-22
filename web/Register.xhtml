@@ -41,12 +41,9 @@
             <tr><td >
                 <b><h:outputLabel value="Choose Color::" /></b></td>
                 <td>
-                    <h:selectManyCheckbox value="#{myBean.user.data}">
-                    <f:selectItem itemLabel="Red" itemValue="Red" />
-                    <f:selectItem itemLabel="Blue" itemValue="Blue" />
-                    <f:selectItem itemLabel="Green" itemValue="Green" />
-                    <f:selectItem itemLabel="Pink" itemValue="Pink" />
-                </h:selectManyCheckbox>
+                    <h:selectManyCheckbox value="#{myBean.user.favNumber2}">
+                        <f:selectItems value="#{myBean.user.favNumber2Value}" />
+                    </h:selectManyCheckbox>
             </td></tr>
         </div>
 
